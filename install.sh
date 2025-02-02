@@ -29,7 +29,7 @@ COLOR_VARIANTS=('-Light' '-Dark')
 OPACITY_VARIANTS=('' '-solid')
 ALT_VARIANTS=('' '-alt')
 SMALL_VARIANTS=('' '-small')
-THEME_VARIANTS=('' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey')
+THEME_VARIANTS=('' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey' '-cherry')
 ICON_VARIANTS=('' '-normal' '-gnome' '-ubuntu' '-arch' '-manjaro' '-fedora' '-debian' '-void' '-nixos')
 
 # COLORS
@@ -70,7 +70,7 @@ usage() {
   printf "  %-25s%s\n" "-c, --color VARIANTS" "Specify theme color variant(s) [light|dark] (Default: All variants)"
   printf "  %-25s%s\n" "-a, --alt VARIANTS" "Specify theme titilebutton variant(s) [standard|alt] (Default: All variants)"
   printf "  %-25s%s\n" "-s, --small VARIANTS" "Specify theme titilebutton size variant(s) [standard|small] (Default: All variants)"
-  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Specify primary theme color [blue|purple|pink|red|orange|yellow|green|grey|all] (Default: MacOS blue)"
+  printf "  %-25s%s\n" "-t, --theme VARIANTS" "Specify primary theme color [blue|purple|pink|red|orange|yellow|green|grey|cherry|all] (Default: MacOS blue)"
   printf "  %-25s%s\n" "-i, --icon VARIANTS" "Specify activities icon variant(s) for gnome-shell [standard|normal|gnome|ubuntu|arch|manjaro|fedora|debian|void|nixos] (Default: standard variant)"
   printf "  %-25s%s\n" "-g, --gdm" "Install GDM theme, this option need root user authority! please run this with sudo"
   printf "  %-25s%s\n" "-r, --revert" "revert GDM theme, this option need root user authority! please run this with sudo"
@@ -193,7 +193,7 @@ install() {
   mkdir -p                                                                                   "${THEME_DIR}/xfwm4"
   cp -r "${SRC_DIR}/assets/xfwm4/assets${color}${small}/"*'.png'                             "${THEME_DIR}/xfwm4"
   cp -r "${SRC_DIR}/main/xfwm4/themerc${color}"                                              "${THEME_DIR}/xfwm4/themerc"
-  
+
   mkdir -p                                                                                   "${THEME_DIR}/unity"
   cp -r "${SRC_DIR}/assets/unity/assets/"*'.png'                                             "${THEME_DIR}/unity"
 
@@ -513,6 +513,10 @@ while [[ $# -gt 0 ]]; do
             themes+=("${THEME_VARIANTS[8]}")
             shift
             ;;
+          cherry)
+            themes+=("${THEME_VARIANTS[9]}")
+            shift
+            ;;
           all)
             themes+=("${THEME_VARIANTS[@]}")
             shift
@@ -645,6 +649,9 @@ theme_color() {
         ;;
       -grey)
         theme_color='grey'
+        ;;
+      -cherry)
+        theme_color='cherry'
         ;;
     esac
     sed -i "/\$theme:/s/default/${theme_color}/" "${SRC_DIR}/sass/_theme-variant-temp.scss"

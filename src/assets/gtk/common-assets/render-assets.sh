@@ -1,12 +1,16 @@
 #! /usr/bin/env bash
 
+# export BUILD_THREADS="2"
+# export MAX_SCALE_FACTOR="2"
+# export XFWM4_SCALE_FACTOR="1"
+
 INKSCAPE="/usr/bin/inkscape"
 OPTIPNG="/usr/bin/optipng"
 
 INDEX="assets.txt"
 INDEX_T="theme_assets.txt"
 
-for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
+for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey' '-cherry'; do
   ASSETS_DIR="assets${theme}"
   SRC_FILE="assets${theme}.svg"
 

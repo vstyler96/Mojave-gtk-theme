@@ -7,7 +7,7 @@ SRC_FILE="thumbnail.svg"
 
 rm -rf thumbnail-{Light,Dark}*.png
 
-for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey'; do
+for theme in '' '-blue' '-purple' '-pink' '-red' '-orange' '-yellow' '-green' '-grey' '-cherry'; do
   for light in 'Light' 'Dark'; do
     obj="thumbnail-${light}${theme}"
 
